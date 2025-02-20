@@ -7,9 +7,14 @@ export const GlobalStore = create<GlobalStoreState>()(
     persist((set) => ({
 
         Projects: [],
+        Capses: [],
 
         setProjects: (newProjects) => set((state) => ({
             Projects: newProjects
+        })),
+
+        setCaps: (newCaps) => set((state) => ({
+            Capses: newCaps
         })),
 
     }), 
