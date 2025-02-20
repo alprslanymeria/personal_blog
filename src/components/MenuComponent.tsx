@@ -7,10 +7,11 @@ import Link from "next/link"
 import MenuIcon from "../../public/icons/menuIcon"
 import XmarkIcon from "../../public/icons/xmarkIcon"
 
-// GET BASE URL
-const BASE = process.env.BASE_URL || "/"
 
 export default function MenuComponent() {
+
+    // GET BASE URL
+    const BASE = process.env.NEXT_PUBLIC_BASE_URL || "/"
 
     const linkClasses = "text-white hover:text-gray-500"
 
