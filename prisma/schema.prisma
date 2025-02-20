@@ -1,0 +1,147 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlserver"
+  url      = env("DATABASE_URL")
+}
+
+
+model Category {
+
+  id              Int         @id @default(autoincrement())
+  name            String
+  description     String
+
+  //REFERANS VERDİKLERİ
+  blogPosts       BlogPost[]
+}
+
+model BlogPost {
+
+  id              Int         @id @default(autoincrement())
+  categoryId      Int
+  imageUrl        String  
+  header          String
+  summary         String      @db.Text  
+  content         String      @db.Text
+  author          String      
+  createdAt       DateTime    @default(now())
+
+  //REFERANS ALDIKLARI
+  category        Category    @relation(fields: [categoryId], references: [id])
+
+  //REFERANS VERDİKLERİ
+  comments        Comment[]
+  blogPostTags    BlogPostTag[]
+}
+
+model Comment {
+
+  commentId       Int         @id @default(autoincrement())
+  blogPostId      Int
+  cookieId        String
+  content         String
+  avatar          String
+  isDeleted       Boolean
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime
+
+  //REFERANS ALDIKLARI
+  blogPost        BlogPost    @relation(fields: [blogPostId], references: [id])
+}
+
+model Tag {
+
+  id              Int         @id @default(autoincrement())
+  name            String      @unique
+
+  //REFERANS VERDİKLERİ
+  blogPostTags    BlogPostTag[]
+}
+
+model BlogPostTag {
+
+  blogPostId      Int
+  tagId           Int
+
+  //REFERANS ALDIKLARI
+  blogPost        BlogPost    @relation(fields: [blogPostId], references: [id])
+  tag             Tag         @relation(fields: [tagId], references: [id])
+
+  @@id([blogPostId, tagId])
+}
+
+model CapsImage {
+
+  id              Int         @id @default(autoincrement())
+  imageUrl        String
+  createdAt       DateTime    @default(now())  
+}
+
+model Project {
+
+  id              Int         @id @default(autoincrement())
+  name            String
+  summary         String
+  content         String
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime
+
+  //REFERANS VERDİKLERİ
+  ProjectImages         ProjectImage[]
+  ProjectLinks          ProjectLink[]
+  ProjectTechnologies   ProjectTechnology[]
+}
+
+model ProjectImage {
+
+  id              Int         @id @default(autoincrement())
+  projectId       Int
+  imageUrl        String
+
+  //REFERANS ALDIKLARI
+  project         Project     @relation(fields: [projectId], references: [id])
+}
+
+model ProjectLink {
+
+  id              Int         @id @default(autoincrement())
+  projectId       Int
+  name            String
+  linkUrl         String
+
+  //REFERANS ALDIKLARI
+  project         Project     @relation(fields: [projectId], references: [id])
+}
+
+model Technology {
+
+  id              Int         @id @default(autoincrement())
+  name            String
+  icon            String
+
+  //REFERANS VERDİKLERİ
+  ProjectTechnologies         ProjectTechnology[]
+}
+
+model ProjectTechnology {
+
+  projectId       Int
+  technologyId    Int
+
+  //REFERANS ALDIKLARI
+  project         Project     @relation(fields: [projectId], references: [id])
+  technology      Technology  @relation(fields: [technologyId], references: [id])
+
+  @@id([projectId, technologyId])
+}
+
+model Subscriber {
+
+  id              Int         @id @default(autoincrement())
+  email           String      @unique
+  status          String      @default("ACTIVE")  
+  createdAt       DateTime    @default(now())
+}
