@@ -38,14 +38,13 @@ export default function ArticleComponent({blogPost} : {blogPost: BlogPostWithRel
                     <div className="flex flex-wrap gap-2">
                         {tags.map((tag) => (
 
-                            <Link
+                            <div
 
                                 key={tag.tag.id}
-                                href={`/tags/${tag.tag.name}`}
                                 className="inline-block bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-medium hover:bg-blue-200"
                             >
                                 #{tag.tag.name}
-                            </Link>
+                            </div>
 
                         ))}
                     </div>
