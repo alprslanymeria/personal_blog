@@ -138,7 +138,7 @@ export default function MakeCommentComponent({blogId} : {blogId: string}) {
                         Loading...
                         </div>
                     ) : state != null ? (
-                        state.status == 200 ? 'Comment başarılı!' : 'Comment başarısız'
+                        state.status == 200 ? 'Comment başarılı!' : state.details
                     ) : ''}
                 </div>
 

@@ -38,14 +38,15 @@ export async function CreateComment(prevState : any, formData : FormData) {
         const blogId = formData.get("blogId") as string
 
         // GET COOKIE INFO
-        // const cookieStore = await cookies()
-        // const userId = cookieStore.get("user-id")
+        const cookieStore = await cookies()
+        const userId = cookieStore.get('userId')?.value
+        console.log(userId)
 
         // CREATE COMMENT
         await prisma.comment.create({
             data: {
                 blogPostId: Number(blogId),
-                cookieId: "user123",
+                cookieId: userId,
                 content: content,
                 avatar: selectedAvatar,
                 isDeleted: false,
