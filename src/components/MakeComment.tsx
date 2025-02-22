@@ -125,6 +125,22 @@ export default function MakeCommentComponent({blogId} : {blogId: string}) {
                 >
                     Comment
                 </button>
+                
+                {/* FORM STATUS */}
+                <div
+                    className={`mt-4 p-2 rounded-md text-center text-sm ${
+                        isPending ? 'bg-yellow-100 text-yellow-800' : ''
+                    }`}
+                >
+                    {isPending ? (
+                        <div className="flex justify-center items-center text-black">
+                            <div className="w-4 h-4 border-4 border-t-transparent border-blue-500 rounded-full animate-spin mr-2"/>
+                        Loading...
+                        </div>
+                    ) : state != null ? (
+                        state.status == 200 ? 'Comment başarılı!' : 'Comment başarısız'
+                    ) : ''}
+                </div>
 
             </form>
         </div>
