@@ -8,6 +8,11 @@ export const GlobalStore = create<GlobalStoreState>()(
 
         Projects: [],
         Capses: [],
+        AllBlogPosts: [],
+        UniqueBlogPosts: [],
+        Category: "",
+        Comments: [],
+        Avatars: [],
 
         setProjects: (newProjects) => set((state) => ({
             Projects: newProjects
@@ -16,6 +21,26 @@ export const GlobalStore = create<GlobalStoreState>()(
         setCaps: (newCaps) => set((state) => ({
             Capses: newCaps
         })),
+
+        setAllBlogPosts: (newBlogPosts) => set((state) => ({
+            AllBlogPosts: newBlogPosts
+        })),
+
+        setUniqueBlogPosts: (newBlogPosts) => set((state) =>  ({
+            UniqueBlogPosts: newBlogPosts
+        })),
+
+        setCategory: (newCategory) => set((state) => ({
+            Category: newCategory
+        })),
+
+        setComments: (newComments) => set((state) => ({
+            Comments: newComments
+        })),
+
+        setAvatars: (newAvatars) => set((state) => ({
+            Avatars: newAvatars
+        }))
 
     }), 
     
