@@ -5,8 +5,8 @@ import { AlertComponentProps } from "@/components/AlertComponent/prop"
 // 3RD PARTY
 import { AlertTriangle, CheckCircle2, Info, XCircle } from "lucide-react"
 // REDUCER & HANDLER & CUSTOM EFFECTS
-import { useAlertReducer } from "@/components/AlertComponent/useAlertReducer"
-import { UseAlertComponentCustomEffect } from "@/components/AlertComponent/useAlertComponentCustomEffect"
+import { useAlertReducer } from "@/components/AlertComponent/reducer"
+import { UseAlertComponentCustomEffect } from "@/components/AlertComponent/customEffect"
 
 
 const alertStyles = {
