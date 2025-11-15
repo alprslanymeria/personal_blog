@@ -1,21 +1,34 @@
 {
   "compilerOptions": {
+    // Derleme sonucu hangi JavaScript sürümüne dönüştürüleceğini belirler.
     "target": "ES2017",
+    // Hangi ortam API’lerinin TypeScript tarafından tanınacağını belirtir.
     "lib": [
       "dom",
       "dom.iterable",
       "esnext"
     ],
+    // .js dosyalarının da derleme sürecine dahil edilmesine izin verir.
     "allowJs": true,
+    // node_modules içindeki tip dosyalarının (.d.ts) doğrulanmasını atlar.
     "skipLibCheck": true,
+    // Tüm katı tip denetimi kurallarını aktif eder.
     "strict": true,
+    // (IF TRUE) TypeScript sadece tip kontrolü yapar, JS çıktısı üretmez.
     "noEmit": true,
+    // CommonJS modüllerinin import sözdizimiyle kullanılmasını sağlar.
     "esModuleInterop": true,
+    //
     "module": "esnext",
+    //
     "moduleResolution": "bundler",
+    //
     "resolveJsonModule": true,
+    //
     "isolatedModules": true,
+    //
     "jsx": "react-jsx",
+    //
     "incremental": true,
     "plugins": [
       {

@@ -12,8 +12,8 @@ class LoggerService {
         // ELASTICSEARCH STREAM
         const streamToElastic = pinoElastic({
 
-            index: process.env.ELASTIC_INDEX || 'language-assistant-logs',
-            node: process.env.ELASTIC_URL || 'http://localhost:9200',
+            index: process.env.ELASTIC_INDEX || 'blog-app-logs',
+            node: process.env.ELASTIC_URL || 'http://elasticsearch:9200',
             'es-version': 8,
             flushBytes: 1000
         })
